@@ -1,0 +1,18 @@
+{
+  "name": "@deptno/dynamodb",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/deptno/awslib",
+  "author": "Bonggyun Lee<deptno@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "rollup": "^1.18.0"
+  }
+}
