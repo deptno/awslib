@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/deptno/awslib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deptno/awslib.git",
+    "directory": "packages/s3"
+  },
   "author": "Bonggyun Lee<deptno@gmail.com>",
   "license": "MIT",
   "scripts": {
