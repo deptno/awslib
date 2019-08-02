@@ -3,7 +3,7 @@ import {cache, CacheInputType} from './cache'
 
 export function createS3(s3: S3) {
   return {
-    cache(params: CacheInputType) {
+    cache<T>(params: CacheInputType<T>) {
       return cache(s3, params)
     },
   }
