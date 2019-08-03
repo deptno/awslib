@@ -6,7 +6,10 @@ import {identity} from 'ramda'
 export async function cache<T>(s3: S3, params: CacheInputType<T>) {
   const {bucket, key, fetch, store = identity, restore = identity} = params
 
-  const s3Item = await getObject(s3, {bucket, key})
+  const s3Item = await getObject(s3, {
+    Bucket: bucket,
+    Key: key
+  })
   if (s3Item) {
     return restore(s3Item)
   }

@@ -1,29 +1,18 @@
 import {S3} from 'aws-sdk'
 
-export async function getObject(s3: S3, params) {
-  const {bucket, key} = params
-
+export async function getObject(s3: S3, params: S3.Types.GetObjectRequest) {
   try {
     const response = await s3
-      .getObject({
-        Bucket: bucket,
-        Key   : key,
-      })
+      .getObject(params)
       .promise()
     return response.Body
   } catch (e) {
     if (e.code === 'NoSuchKey') {
-      console.log(`[ok] ${key} doesn't exists`)
+      console.log(`[ok] ${params.Key} doesn't exists`)
     } else {
       console.error('error get')
       console.error(e)
-      console.error({bucket, key})
+      console.error(params)
     }
   }
-}
-
-
-type GetInputType = {
-  bucket: string
-  key: string
 }
