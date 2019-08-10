@@ -10,6 +10,7 @@ import {update} from './api/update'
 import {scanAllSegmented} from './api/scan-all-segmented'
 import {scanAll} from './api/scan-all'
 import {DocumentClient} from 'aws-sdk/clients/dynamodb'
+import {js2DdbDoc} from './normalizer'
 
 export function createDynamoDB(ddbClient: DocumentClient) {
   return {
@@ -46,5 +47,8 @@ export function createDynamoDB(ddbClient: DocumentClient) {
     update<T>(params: DocumentClient.UpdateItemInput) {
       return update<T>(ddbClient, params)
     },
+    util: {
+      js2DdbDoc
+    }
   }
 }
