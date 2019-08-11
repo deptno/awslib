@@ -12,3 +12,9 @@ api
 - `queryAll` recursive query until end of items
 
 MIT
+
+`0.0.2` - util.js2ddbDoc support Buffer type
+`0.0.1` - add util.js2ddbDoc  
+`0.0.0` - release
+
+MIT

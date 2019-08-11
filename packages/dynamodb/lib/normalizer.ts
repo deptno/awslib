@@ -18,7 +18,9 @@ export const js2DdbDoc = <T>(obj: T) => {
 }
 
 const ddbValue = (value, ifSet: SetTransformer = defaultSetTransformer) => {
-  if (value instanceof Set) {
+  if (value instanceof Buffer) {
+    return value
+  } else if (value instanceof Set) {
     return ifSet(value)
   } else if (value instanceof Date) {
     return value.getTime()
