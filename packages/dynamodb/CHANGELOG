@@ -1,2 +1,4 @@
-0.0.1 - util.js2ddbDoc 추가
-0.0.0 - 최초 릴리즈
+0.0.3 - fix: query 시에 `ReturnConsumedCapacity` 를 파라메터로 넘기지 않은 경우 에러 발생
+0.0.2 - fix: util.js2ddbDoc Buffer 지원
+0.0.1 - feature: util.js2ddbDoc 추가
+0.0.0 - chore: 최초 릴리즈

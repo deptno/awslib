@@ -11,7 +11,9 @@ export async function query<T>(ddbClient: DocumentClient, params: DocumentClient
       .promise()
 
     console.log(JSON.stringify({
-      rcu      : response.ConsumedCapacity.CapacityUnits,
+      rcu      : response.ConsumedCapacity
+        ? response.ConsumedCapacity.CapacityUnits
+        : 'unknown',
       condition: params.KeyConditionExpression,
       values   : params.ExpressionAttributeValues,
     }))
