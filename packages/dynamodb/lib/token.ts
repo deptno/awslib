@@ -1,12 +1,13 @@
 import crypto from 'crypto'
+import {Key} from 'aws-sdk/clients/dynamodb'
 
-export function createToken(obj: object, salt: Buffer): string {
-  if (obj) {
-    return encrypt(JSON.stringify(obj), salt)
+export function createToken(key: Key, salt: Buffer): string {
+  if (key) {
+    return encrypt(JSON.stringify(key), salt)
   }
 }
 
-export function parseToken(base64: string, salt: Buffer) {
+export function parseToken(base64: string, salt: Buffer): Key {
   return JSON.parse(decrypt(base64, salt))
 }
 

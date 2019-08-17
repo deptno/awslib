@@ -1,4 +1,5 @@
-0.0.3 - feature: util.createToken, util.parseToken 추가
+0.0.5 - chore: token 인자로 Key 타입 명시
+0.0.4 - feature: util.createToken, util.parseToken 추가
 0.0.3 - fix: query 시에 `ReturnConsumedCapacity` 를 파라메터로 넘기지 않은 경우 에러 발생
 0.0.2 - fix: util.js2ddbDoc Buffer 지원
 0.0.1 - feature: util.js2ddbDoc 추가

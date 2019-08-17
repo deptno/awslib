@@ -1,11 +1,7 @@
-import {DocumentClient} from 'aws-sdk/clients/dynamodb'
-import {identity} from 'ramda'
+import {DocumentClient, Key} from 'aws-sdk/clients/dynamodb'
 
 export async function query<T>(ddbClient: DocumentClient, params: DocumentClient.QueryInput): Promise<PaginationResult<T>> {
   try {
-    if (params.ExclusiveStartKey) {
-      params.ExclusiveStartKey = parseToken(params.ExclusiveStartKey)
-    }
     const response = await ddbClient
       .query(params)
       .promise()
@@ -19,9 +15,9 @@ export async function query<T>(ddbClient: DocumentClient, params: DocumentClient
     }))
 
     return {
-      items      : response.Items as T[],
-      nextToken  : createToken(response.LastEvaluatedKey),
-      firstResult: !Boolean(params.ExclusiveStartKey)
+      items           : response.Items as T[],
+      lastEvaluatedKey: response.LastEvaluatedKey,
+      firstResult     : !Boolean(params.ExclusiveStartKey)
     }
   } catch (e) {
     console.error('query')
@@ -35,9 +31,6 @@ export async function query<T>(ddbClient: DocumentClient, params: DocumentClient
 
 export type PaginationResult<T> = {
   items: T[]
-  nextToken?: string
+  lastEvaluatedKey?: Key
   firstResult?: boolean
 }
-
-const createToken = identity
-const parseToken = identity
