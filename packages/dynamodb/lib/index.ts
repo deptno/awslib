@@ -11,6 +11,7 @@ import {scanAllSegmented} from './api/scan-all-segmented'
 import {scanAll} from './api/scan-all'
 import {DocumentClient} from 'aws-sdk/clients/dynamodb'
 import {js2DdbDoc} from './normalizer'
+import {createToken, parseToken} from './token'
 
 export function createDynamoDB(ddbClient: DocumentClient) {
   return {
@@ -48,7 +49,9 @@ export function createDynamoDB(ddbClient: DocumentClient) {
       return update<T>(ddbClient, params)
     },
     util: {
-      js2DdbDoc
+      js2DdbDoc,
+      createToken,
+      parseToken
     }
   }
 }

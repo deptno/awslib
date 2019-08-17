@@ -1,6 +1,6 @@
 {
   "name": "@deptno/dynamodb",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -17,6 +17,7 @@
     "ramda": "^0.26.1"
   },
   "devDependencies": {
+    "@types/node": "^12.7.2",
     "rollup": "^1.18.0"
   }
 }
