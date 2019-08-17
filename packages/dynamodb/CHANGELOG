@@ -1,3 +1,4 @@
+0.0.5 - fix: parseToken 에 키가 들어오지 않은 경우 `undefined` 처리
 0.0.5 - chore: token 인자로 Key 타입 명시
 0.0.4 - feature: util.createToken, util.parseToken 추가
 0.0.3 - fix: query 시에 `ReturnConsumedCapacity` 를 파라메터로 넘기지 않은 경우 에러 발생

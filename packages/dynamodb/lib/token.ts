@@ -7,8 +7,10 @@ export function createToken(key: Key, salt: Buffer): string {
   }
 }
 
-export function parseToken(base64: string, salt: Buffer): Key {
-  return JSON.parse(decrypt(base64, salt))
+export function parseToken(base64Token: string, salt: Buffer): Key {
+  if (base64Token) {
+    return JSON.parse(decrypt(base64Token, salt))
+  }
 }
 
 const ALGORITHM = 'aes-192-cbc'
