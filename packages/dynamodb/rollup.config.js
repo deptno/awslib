@@ -18,6 +18,7 @@ export default {
   external: [
     'aws-sdk',
     'ramda',
-    'crypto'
+    'crypto',
+    'zlib'
   ]
 }

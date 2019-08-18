@@ -1,3 +1,4 @@
+0.0.8 - feature: add util.{gzip,unGzip}
 0.0.7 - feature: raw 객체 접근 지원
 0.0.6 - fix: parseToken 에 키가 들어오지 않은 경우 `undefined` 처리
 0.0.5 - chore: token 인자로 Key 타입 명시

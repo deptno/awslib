@@ -12,6 +12,7 @@ import {scanAll} from './api/scan-all'
 import {DocumentClient} from 'aws-sdk/clients/dynamodb'
 import {js2DdbDoc} from './normalizer'
 import {createToken, parseToken} from './token'
+import {gzip, unGzip} from './gzip'
 
 export function createDynamoDB(ddbClient: DocumentClient) {
   return {
@@ -52,7 +53,9 @@ export function createDynamoDB(ddbClient: DocumentClient) {
     util: {
       js2DdbDoc,
       createToken,
-      parseToken
-    }
+      parseToken,
+      gzip,
+      unGzip,
+    },
   }
 }
