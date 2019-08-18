@@ -5,6 +5,7 @@ import {putObject} from './api/put-object'
 
 export function createS3(s3: S3) {
   return {
+    raw: s3,
     cache<T>(params: CacheInputType<T>) {
       return cache(s3, params)
     },

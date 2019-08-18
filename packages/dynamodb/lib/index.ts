@@ -15,6 +15,7 @@ import {createToken, parseToken} from './token'
 
 export function createDynamoDB(ddbClient: DocumentClient) {
   return {
+    raw: ddbClient,
     batchGet<T>(params: BatchGetMassiveInputType) {
       return batchGetMassive<T>(ddbClient, params)
     },
