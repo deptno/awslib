@@ -2374,6 +2374,11 @@ tap@^14.5.0:
     yaml "^1.6.0"
     yapool "^1.0.0"
 
+tapjs@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/tapjs/-/tapjs-1.0.9.tgz#6c9ff48dd3e5f9a902ec6880699fed0d5facc678"
+  integrity sha1-bJ/0jdPl+akC7GiAaZ/tDV+sxng=
+
 tcompare@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/tcompare/-/tcompare-2.3.0.tgz#4f5ab56a4ab248ee2b8cc496e0675d47b4264fde"

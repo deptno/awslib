@@ -1,11 +1,15 @@
 import {deflateSync, inflateSync} from 'zlib'
+import {compose} from 'ramda'
 
 type Gzip<T> = Buffer & {
   __parse?: T
 }
-export const gzip = <T>(json: T): Gzip<T> => {
-  return deflateSync(Buffer.from(JSON.stringify(json)))
-}
-export const unGzip = <T>(binary: Gzip<T>): T => {
-  return inflateSync(binary) as unknown as T
-}
+export const gzip: <T>(json: T) => Gzip<T> = compose(
+  deflateSync,
+  Buffer.from,
+  JSON.stringify,
+)
+export const unGzip: <T>(binary: Gzip<T>) => T = compose(
+  JSON.parse,
+  inflateSync,
+)

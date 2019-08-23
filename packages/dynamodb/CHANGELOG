@@ -1,3 +1,7 @@
+0.0.10 -
+ chore: test env 추가
+ fix: compose 시 에러 수정
+0.0.9 - fix: unGzip 시 JSON.parse 추가
 0.0.8 - feature: add util.{gzip,unGzip}
 0.0.7 - feature: raw 객체 접근 지원
 0.0.6 - fix: parseToken 에 키가 들어오지 않은 경우 `undefined` 처리

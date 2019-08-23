@@ -14,10 +14,9 @@ npm i @deptno/dynamodb
   - `js2ddbDoc` normalize to dynamodb document
   - `createToken` tokenizer
   - `parseToken` token to json
+  - `gzip` gzip json with type
+  - `unGzip` unGzip json with type
 
 ###### [changelog](CHANGELOG)
-`0.0.2` - util.js2ddbDoc support Buffer type
-`0.0.1` - add util.js2ddbDoc  
-`0.0.0` - release
 
 ###### MIT
