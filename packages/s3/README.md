@@ -27,10 +27,4 @@ const channels = await s3lib.cache<any[]>({
    })
 ```
 
-0.0.1
-- add cache.{store,restore}
-
-0.0.0
-- release
-
 MIT

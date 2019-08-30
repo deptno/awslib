@@ -2,7 +2,7 @@ import {S3} from 'aws-sdk'
 
 export async function putObject(s3: S3, params: S3.Types.PutObjectRequest) {
   try {
-    return s3
+    return await s3
       .putObject(params)
       .promise()
   } catch (e) {
