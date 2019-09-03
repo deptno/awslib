@@ -6,7 +6,7 @@ export function createLambda(lambda: Lambda, cors?: string) {
     raw: lambda,
     util: {
       response(statusCode: number, body?: string) {
-        return _response(statusCode, body, cors)
+        return _response(cors, statusCode, body)
       },
     },
   }
