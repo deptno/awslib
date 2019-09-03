@@ -14,7 +14,8 @@
     "build": "rimraf dist && rollup -c"
   },
   "peerDependencies": {
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "aws-sdk": "*"
   },
   "devDependencies": {
     "rimraf": "^3.0.0",

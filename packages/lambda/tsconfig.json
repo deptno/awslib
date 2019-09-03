@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "sourceRoot": ".",
+    "module": "esnext"
+  }
+}

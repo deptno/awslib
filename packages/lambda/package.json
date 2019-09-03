@@ -1,25 +1,23 @@
 {
-  "name": "@deptno/dynamodb",
-  "version": "0.0.10",
+  "name": "@deptno/lambda",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/deptno/awslib.git",
-    "directory": "packages/dynamodb"
+    "directory": "packages/lambda"
   },
   "author": "Bonggyun Lee<deptno@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && rollup -c"
+    "build": "rollup -c"
   },
   "peerDependencies": {
     "ramda": "^0.26.1",
     "aws-sdk": "*"
   },
   "devDependencies": {
-    "@types/node": "^12.7.2",
-    "rimraf": "^3.0.0",
     "rollup": "^1.18.0"
   }
 }
