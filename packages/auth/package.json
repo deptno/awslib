@@ -1,0 +1,32 @@
+{
+  "name": "@deptno/auth",
+  "version": "0.0.3",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deptno/awslib.git",
+    "directory": "packages/auth"
+  },
+  "author": "Bonggyun Lee<deptno@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "aws-sdk": "*",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.31",
+    "@types/sinon": "^7.0.13",
+    "rollup": "^1.18.0",
+    "sinon": "^7.4.2",
+    "tap": "^14.6.1"
+  },
+  "dependencies": {
+    "@deptno/lambda": "^0.0.4",
+    "axios": "^0.19.0",
+    "jsonwebtoken": "^8.5.1"
+  }
+}

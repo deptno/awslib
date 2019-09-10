@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "sourceRoot": ".",
+    "module": "esnext"
+  },
+  "exclude": [
+    "__tests__/**/*"
+  ]
+}

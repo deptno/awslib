@@ -1,5 +1,5 @@
 import {Lambda} from 'aws-sdk'
-import {response as _response} from './util/response'
+import {redirect, response as _response} from './util/response'
 
 export function createLambda(lambda: Lambda, cors?: string) {
   return {
@@ -8,6 +8,7 @@ export function createLambda(lambda: Lambda, cors?: string) {
       response(statusCode: number, body?: string) {
         return _response(cors, statusCode, body)
       },
+      redirect
     },
   }
 }
