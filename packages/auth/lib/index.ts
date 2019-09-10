@@ -4,6 +4,11 @@ import {signIn} from './api/sign-in'
 import {refresh} from './api/refresh'
 import {signInCallback} from './api/sign-in-callback'
 
+export {createDynamoDbStoreMethods} from './store/db/dynamodb'
+export {createToken, readToken} from './lib/jwt'
+export {createAuthStore} from './store'
+export {createGoogleProvider} from './provider'
+
 export function createAuth<U>(provider: Provider, store: AuthStore<U>) {
   return {
     signIn({state}) {
