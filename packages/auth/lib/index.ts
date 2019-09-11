@@ -11,7 +11,7 @@ export {createGoogleProvider} from './provider'
 
 export function createAuth<U>(provider: Provider, store: AuthStore<U>) {
   return {
-    signIn({state, redirectUri}) {
+    signIn({state}) {
       return store
         .saveState({
           state,
@@ -20,18 +20,17 @@ export function createAuth<U>(provider: Provider, store: AuthStore<U>) {
         .then(() => signIn({
           clientId: provider.raw.clientId,
           state,
-          redirectUri,
+          redirectUri: provider.raw.redirectUri,
         }))
         .catch(console.error)
     },
-    signInCallback({state, code, token, redirectUri, redirectClientUri}) {
+    signInCallback({state, code, token, redirectClientUri}) {
       return signInCallback({
         provider,
         store,
         token,
         code,
         state,
-        redirectUri,
         redirectClientUri,
       })
     },

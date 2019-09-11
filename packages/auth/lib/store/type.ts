@@ -1,3 +1,21 @@
+import {DocumentClient} from 'aws-sdk/clients/dynamodb'
+
+export type CreateDynamoDbMethodInput = {
+  ddbClient: DocumentClient
+  tables: {
+    user: {
+      tableName: string
+      hashKey: string
+      rangeKey: string
+    }
+    token: {
+      tableName: string
+      hashKey: string
+      rangeKey: string
+      ttlKey: string
+    }
+  }
+}
 export type DbMethods<U> = {
   upsertUser(params: UpsertUserInput): Promise<U>
   saveState(params: SaveStateInput)

@@ -20,6 +20,7 @@ export default {
     'aws-sdk',
     'ramda',
     'axios',
-    'jsonwebtoken'
+    'jsonwebtoken',
+    'debug'
   ]
 }

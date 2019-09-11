@@ -1,6 +1,6 @@
 {
   "name": "@deptno/auth",
-  "version": "0.0.7",
+  "version": "0.0.15",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -14,7 +14,8 @@
   "author": "Bonggyun Lee<deptno@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && rollup -c"
+    "build": "rimraf dist && rollup -c",
+    "deploy": "npm publish"
   },
   "peerDependencies": {
     "aws-sdk": "*",
@@ -31,6 +32,7 @@
   "dependencies": {
     "@deptno/lambda": "^0.0.4",
     "axios": "^0.19.0",
+    "debug": "^4.1.1",
     "jsonwebtoken": "^8.5.1"
   }
 }
