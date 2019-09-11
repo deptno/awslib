@@ -18,5 +18,4 @@ type GetSignInInput = {
   state: string
   clientId: string
   redirectUri: string
-  expiresIn: number
 }

@@ -5,7 +5,6 @@ import {createDynamoDbStoreMethods} from '../lib/store/db/dynamodb'
 import {DynamoDB} from 'aws-sdk'
 import tap from'tap'
 import {hash} from '../lib/lib/crypto'
-import axios from 'axios'
 
 const ddbClient = new DynamoDB.DocumentClient({region: 'ap-northeast-2'})
 const ddbMethods = createDynamoDbStoreMethods({
@@ -31,24 +30,5 @@ const provider = createGoogleProvider({
   tokenSecret: 'token secret',
   refreshTokenExpiresIn: 365,
   expiresIn: 15,
-  redirectClientUri: 'https://dev.tubemon.io/auth/google',
-  redirectUri: 'https://auth.dev.tubemon.io/auth/callback',
 })
 const auth = createAuth(provider, store)
-
-!async function () {
-
-  const state = hash()
-  const signInResult = auth.signIn({
-    state
-  })
-  console.log({signInResult})
-  tap.ok(signInResult)
-//  const signInCallbackResult = await auth.signInCallback({
-//    state,
-//    code: 'code',
-//    token: 'token'
-//  })
-//  console.log({signInCallbackResult})
-}()
-

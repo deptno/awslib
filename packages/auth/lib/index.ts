@@ -11,22 +11,28 @@ export {createGoogleProvider} from './provider'
 
 export function createAuth<U>(provider: Provider, store: AuthStore<U>) {
   return {
-    signIn({state}) {
+    signIn({state, redirectUri}) {
       return store
         .saveState({
           state,
           expiresIn: 15,
         })
-        .then(() => signIn({...provider.raw, state}))
+        .then(() => signIn({
+          clientId: provider.raw.clientId,
+          state,
+          redirectUri,
+        }))
         .catch(console.error)
     },
-    signInCallback({state, code, token}) {
+    signInCallback({state, code, token, redirectUri, redirectClientUri}) {
       return signInCallback({
         provider,
         store,
         token,
         code,
         state,
+        redirectUri,
+        redirectClientUri,
       })
     },
     refresh({refreshToken, token}) {

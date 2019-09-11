@@ -3,9 +3,9 @@ import {stringify} from 'querystring'
 import {Provider} from '../provider'
 import {AuthStore} from '../store'
 
-export const signInCallback = async ({provider, store, code, state, token}: GetSignInCallbackInput) => {
+export const signInCallback = async ({provider, store, code, state, token, redirectUri, redirectClientUri}: GetSignInCallbackInput) => {
   if (await store.revokeState({state})) {
-    const {idToken} = await provider.getTokens({code, state})
+    const {idToken} = await provider.getTokens({code, state, redirectUri})
     const claim = getClaim(idToken)
     const id = claim.email
 
@@ -29,7 +29,7 @@ export const signInCallback = async ({provider, store, code, state, token}: GetS
       refresh_token: refreshToken,
     }
     // todo / 로 되어 있었는데 ? 가 맞는 것 같아 수정함 동작 확인 필요
-    return `${provider.raw.redirectClientUri}?${stringify(params)}`
+    return `${redirectClientUri}?${stringify(params)}`
   }
 }
 
@@ -39,4 +39,6 @@ type GetSignInCallbackInput = {
   token: string
   code: string
   state: string
+  redirectUri: string
+  redirectClientUri: string
 }

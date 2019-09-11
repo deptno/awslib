@@ -3,7 +3,7 @@ import {GetTokensInput, ProviderInfo} from '../type'
 import axios from 'axios'
 
 export const getTokens = async (provider: ProviderInfo, params: GetTokensInput): Promise<IdTokens> => {
-  const {state, code} = params
+  const {state, code, redirectUri} = params
   const authorization_uri = 'https://www.googleapis.com/oauth2/v4/token'
   const grant_type = 'authorization_code'
 
@@ -13,7 +13,7 @@ export const getTokens = async (provider: ProviderInfo, params: GetTokensInput):
       stringify({
         client_id: provider.clientId,
         client_secret: provider.clientSecret,
-        redirect_uri: provider.redirectUri,
+        redirect_uri: redirectUri,
         grant_type,
         code,
         state,

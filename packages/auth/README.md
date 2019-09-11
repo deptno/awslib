@@ -1,9 +1,10 @@
-# @deptno/lambda
+# @deptno/auth
+
+@personal library
 
 ```
-npm i @deptno/lambda
+npm i @deptno/auth
 ```
 
-util.response
 
 MIT
