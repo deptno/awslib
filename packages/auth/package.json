@@ -1,6 +1,6 @@
 {
   "name": "@deptno/auth",
-  "version": "0.0.15",
+  "version": "0.0.19",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -14,7 +14,7 @@
   "author": "Bonggyun Lee<deptno@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && rollup -c",
+    "prepublish": "rimraf dist && rollup -c",
     "deploy": "npm publish"
   },
   "peerDependencies": {

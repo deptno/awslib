@@ -3,7 +3,7 @@ import {SaveRefreshTokenInput} from '../../../type'
 export function saveRefreshToken(params) {
   const {ddbClient, tables} = params
 
-  return async function ({userId, payload, token, expiresIn}: SaveRefreshTokenInput) {
+  return async function ({id, token, expiresIn}: SaveRefreshTokenInput) {
     console.log('> save refresh token')
     const putParams = {
       TableName: tables.token.tableName,
@@ -11,9 +11,8 @@ export function saveRefreshToken(params) {
         [tables.token.hashKey]: token,
         [tables.token.rangeKey]: 'refresh',
         [tables.token.ttlKey]: expiresIn,
-        userId,
+        id,
         expired: false,
-        payload: JSON.stringify(payload || {}),
       },
     }
 

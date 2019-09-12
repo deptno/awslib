@@ -2,39 +2,38 @@ import {createToken, getClaim} from '../lib/jwt'
 import {stringify} from 'querystring'
 import {Provider} from '../provider'
 import {AuthStore} from '../store'
+import {pick} from 'ramda'
 import debug from 'debug'
 
 const log = debug('auth')
 
-export const signInCallback = async ({provider, store, code, state, token, redirectClientUri}: GetSignInCallbackInput) => {
-  log('> in')
+export const signInCallback = async ({provider, store, code, state, token, redirectClientUri, host}: GetSignInCallbackInput) => {
   if (await store.revokeState({state})) {
     log('> revoked')
     const {idToken} = await provider.getTokens({code, state})
-    log('> idToken', idToken)
-    const claim = getClaim(idToken)
-    log('> idToken', claim)
-    const id = claim.email
+    const googleClaim = getClaim(idToken)
+    log('> idToken', googleClaim)
+    const id = googleClaim.email
+    const profile = pick([
+      'email',
+      'email_verified',
+      'locale',
+      'name',
+      'picture',
+    ], googleClaim)
+    await store.upsertUser({id, profile})
 
-    const userContext = await store.upsertUser({
-      userId: id,
-      profile: claim,
-    })
-    const payload = {id, ...userContext}
+    const payload = {
+      iss: host,
+      [`https://${host}/profile`]: profile
+    }
     const options = {expiresIn: provider.raw.expiresIn}
-    log('> payload', payload)
-    log('> options', options)
-
     const authorizationToken = createToken(payload, provider.raw.tokenSecret, options)
-    log('> authorizationToken', authorizationToken)
     const refreshToken = await store.saveRefreshToken({
-      userId: id,
-      expiresIn: provider.raw.refreshTokenExpiresIn,
-      payload,
+      id,
       token,
+      expiresIn: provider.raw.refreshTokenExpiresIn,
     })
-    log('> refreshToken', refreshToken)
-
     const params = {
       authorization_token: authorizationToken,
       refresh_token: refreshToken,
@@ -53,4 +52,5 @@ type GetSignInCallbackInput = {
   code: string
   state: string
   redirectClientUri: string
+  host: string
 }

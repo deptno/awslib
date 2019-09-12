@@ -25,7 +25,7 @@ export type DbMethods<U> = {
 }
 
 export type UpsertUserInput = {
-  userId: string
+  id: string
   profile: any
 }
 export type SaveStateInput = {
@@ -40,8 +40,7 @@ export type RevokeRefreshTokenInput = {
   token: string
 }
 export type SaveRefreshTokenInput = {
-  userId: string | number
-  payload: any
+  id: string | number
   token: string
   expiresIn: number
 }

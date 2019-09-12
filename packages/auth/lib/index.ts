@@ -24,7 +24,7 @@ export function createAuth<U>(provider: Provider, store: AuthStore<U>) {
         }))
         .catch(console.error)
     },
-    signInCallback({state, code, token, redirectClientUri}) {
+    signInCallback({state, code, token, redirectClientUri, host}) {
       return signInCallback({
         provider,
         store,
@@ -32,6 +32,7 @@ export function createAuth<U>(provider: Provider, store: AuthStore<U>) {
         code,
         state,
         redirectClientUri,
+        host,
       })
     },
     refresh({refreshToken, token}) {

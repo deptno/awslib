@@ -3,8 +3,7 @@ import {UpsertUserInput} from '../../../type'
 export function upsertUser<U>(params) {
   const {ddbClient, tables} = params
 
-  return async function ({userId, profile}: UpsertUserInput): Promise<U> {
-    console.log('upsertUser', {profile})
+  return async function ({id, profile}: UpsertUserInput): Promise<U> {
     const now = new Date().toISOString()
 
     try {
@@ -12,7 +11,7 @@ export function upsertUser<U>(params) {
         .update({
           TableName: tables.user.tableName,
           Key: {
-            [tables.user.hashKey]: userId,
+            [tables.user.hashKey]: id,
             [tables.user.rangeKey]: 'user#google',
           },
           UpdateExpression: [
