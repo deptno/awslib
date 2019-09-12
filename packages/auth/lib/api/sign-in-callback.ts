@@ -24,8 +24,9 @@ export const signInCallback = async ({provider, store, code, state, token, redir
     await store.upsertUser({id, profile})
 
     const payload = {
+      id,
       iss: host,
-      [`https://${host}/profile`]: profile
+      ...profile
     }
     const options = {expiresIn: provider.raw.expiresIn}
     const authorizationToken = createToken(payload, provider.raw.tokenSecret, options)

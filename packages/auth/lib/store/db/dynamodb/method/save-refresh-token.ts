@@ -10,7 +10,7 @@ export function saveRefreshToken(params) {
       Item: {
         [tables.token.hashKey]: token,
         [tables.token.rangeKey]: 'refresh',
-        [tables.token.ttlKey]: expiresIn,
+        [tables.token.ttlKey]: ~~(Date.now() / 1000) + expiresIn,
         id,
         expired: false,
       },

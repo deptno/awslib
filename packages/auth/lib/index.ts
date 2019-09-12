@@ -5,7 +5,7 @@ import {refresh} from './api/refresh'
 import {signInCallback} from './api/sign-in-callback'
 
 export {createDynamoDbStoreMethods} from './store/db/dynamodb'
-export {createToken, readToken} from './lib/jwt'
+export {createToken, readToken, getClaim} from './lib/jwt'
 export {createAuthStore} from './store'
 export {createGoogleProvider} from './provider'
 
