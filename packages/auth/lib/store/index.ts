@@ -1,14 +1,14 @@
-import {DbMethods} from './type'
+import {CreateDynamoDbStoreInput, StoreMethods} from './type'
+import {createDynamoDbStore} from './db/dynamodb'
 
-export function createAuthStore<U>(methods: DbMethods<U>) {
-  return {
-    upsertUser: methods.upsertUser,
-    saveRefreshToken: methods.saveRefreshToken,
-    revokeRefreshToken: methods.revokeRefreshToken,
-    saveState: methods.saveState,
-    revokeState: methods.expireStateAndGetOldItem
+export function createAuthStore<U>({type, params}: CreateAuthStoreInput<U>): StoreMethods<U> {
+  if (type === 'dynamodb') {
+    return createDynamoDbStore(params)
   }
+  throw new Error(`unsupported type ${type}`)
 }
 
-export type AuthStore<U = any> = ReturnType<typeof createAuthStore>
-
+type CreateAuthStoreInput<U> = {
+  type: 'dynamodb',
+  params: CreateDynamoDbStoreInput
+}

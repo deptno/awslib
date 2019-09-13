@@ -1,8 +1,8 @@
 import {Provider} from '../provider'
-import {AuthStore} from '../store'
 import {createToken} from '../lib/jwt'
+import {StoreMethods} from '../store/type'
 
-export async function refresh(params: RefreshInput) {
+export async function refresh<U>(params: RefreshInput<U>) {
   const {provider, store, refreshToken, token} = params
   const results = await store.revokeRefreshToken({
     oldToken: refreshToken,
@@ -39,9 +39,9 @@ export async function refresh(params: RefreshInput) {
   }
 }
 
-type RefreshInput = {
+type RefreshInput<U> = {
   provider: Provider
-  store: AuthStore
+  store: StoreMethods<U>
   refreshToken: string
   token: string
 }

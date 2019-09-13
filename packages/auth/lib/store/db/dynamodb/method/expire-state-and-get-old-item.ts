@@ -1,6 +1,7 @@
-import {CreateDynamoDbMethodInput, ExpireStateAndGetOldItemInput} from '../../../type'
+import {CreateDynamoDbStoreInput, ExpireStateAndGetOldItemInput} from '../../../type'
+import {log} from '../../../../lib/log'
 
-export function expireStateAndGetOldItem(params: CreateDynamoDbMethodInput) {
+export function expireStateAndGetOldItem(params: CreateDynamoDbStoreInput) {
   const {ddbClient, tables} = params
 
   return async function ({state}: ExpireStateAndGetOldItemInput) {
@@ -16,12 +17,16 @@ export function expireStateAndGetOldItem(params: CreateDynamoDbMethodInput) {
         })
         .promise()
 
-      return !!response.Attributes
+      log('response', response)
+      if (response.Attributes) {
+        return response.Attributes.host
+      }
+      return
     } catch (e) {
       console.error(e.code, e.message)
       console.error('error, ddb expire state, return true to assume state is already expired')
 
-      return false
+      return
     }
   }
 }

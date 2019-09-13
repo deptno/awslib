@@ -1,11 +1,11 @@
 import {expireStateAndGetOldItem, revokeRefreshToken, saveRefreshToken, saveState, upsertUser} from './method'
-import {CreateDynamoDbMethodInput, DbMethods} from '../../type'
+import {CreateDynamoDbStoreInput, StoreMethods} from '../../type'
 
-export const createDynamoDbStoreMethods = <U>(params: CreateDynamoDbMethodInput): DbMethods<U> => {
+export const createDynamoDbStore = <U>(params: CreateDynamoDbStoreInput): StoreMethods<U> => {
   return {
     upsertUser: upsertUser<U>(params),
     saveState: saveState(params),
-    expireStateAndGetOldItem: expireStateAndGetOldItem(params),
+    revokeState: expireStateAndGetOldItem(params),
     saveRefreshToken: saveRefreshToken(params),
     revokeRefreshToken: revokeRefreshToken(params),
   }

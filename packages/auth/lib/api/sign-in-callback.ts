@@ -1,14 +1,13 @@
 import {createToken, getClaim} from '../lib/jwt'
 import {stringify} from 'querystring'
 import {Provider} from '../provider'
-import {AuthStore} from '../store'
 import {pick} from 'ramda'
-import debug from 'debug'
+import {StoreMethods} from '../store/type'
+import {log} from '../lib/log'
 
-const log = debug('auth')
-
-export const signInCallback = async ({provider, store, code, state, token, redirectClientUri, host}: GetSignInCallbackInput) => {
-  if (await store.revokeState({state})) {
+export const signInCallback = async <U>({provider, store, code, state, token, iss}: GetSignInCallbackInput<U>) => {
+  const host = await store.revokeState({state})
+  if (host) {
     log('> revoked')
     const {idToken} = await provider.getTokens({code, state})
     const googleClaim = getClaim(idToken)
@@ -25,7 +24,7 @@ export const signInCallback = async ({provider, store, code, state, token, redir
 
     const payload = {
       id,
-      iss: host,
+      iss,
       ...profile
     }
     const options = {expiresIn: provider.raw.expiresIn}
@@ -41,17 +40,16 @@ export const signInCallback = async ({provider, store, code, state, token, redir
     }
     // todo / 로 되어 있었는데 ? 가 맞는 것 같아 수정함 동작 확인 필요
     log('> params', params)
-    return `${redirectClientUri}?${stringify(params)}`
+    return `${host}?${stringify(params)}`
   }
   log('< fail to revoke')
 }
 
-type GetSignInCallbackInput = {
+type GetSignInCallbackInput<U> = {
   provider: Provider
-  store: AuthStore
+  store: StoreMethods<U>
   token: string
   code: string
   state: string
-  redirectClientUri: string
-  host: string
+  iss: string
 }

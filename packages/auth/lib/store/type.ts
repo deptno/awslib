@@ -1,6 +1,6 @@
 import {DocumentClient} from 'aws-sdk/clients/dynamodb'
 
-export type CreateDynamoDbMethodInput = {
+export type CreateDynamoDbStoreInput = {
   ddbClient: DocumentClient
   tables: {
     user: {
@@ -16,10 +16,10 @@ export type CreateDynamoDbMethodInput = {
     }
   }
 }
-export type DbMethods<U> = {
+export type StoreMethods<U> = {
   upsertUser(params: UpsertUserInput): Promise<U>
   saveState(params: SaveStateInput)
-  expireStateAndGetOldItem(params: ExpireStateAndGetOldItemInput): Promise<boolean>
+  revokeState(params: ExpireStateAndGetOldItemInput): Promise<string|undefined>
   saveRefreshToken(params: SaveRefreshTokenInput)
   revokeRefreshToken(params: RevokeRefreshTokenInput)
 }
@@ -31,6 +31,7 @@ export type UpsertUserInput = {
 export type SaveStateInput = {
   state: string
   expiresIn: number
+  host: string
 }
 export type ExpireStateAndGetOldItemInput = {
   state: string

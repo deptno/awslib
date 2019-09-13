@@ -5,6 +5,7 @@
     "module": "esnext"
   },
   "exclude": [
-    "__tests__/**/*"
+    "__tests__/**/*",
+    "example/**/*"
   ]
 }
