@@ -9,7 +9,7 @@
     "directory": "packages/auth"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/deptno"
+    "registry": "https://npm.pkg.github.com/@deptno"
   },
   "author": "Bonggyun Lee<deptno@gmail.com>",
   "license": "MIT",
