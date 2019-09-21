@@ -1,18 +1,24 @@
-import {put} from './api/put'
-import {batchGetMassive, BatchGetMassiveInputType} from './api/batch-get-massive'
-import {get} from './api/get'
-import {batchWriteMassive, BatchWriteMassiveInputType} from './api/batch-write-massive'
-import {del} from './api/del'
-import {query} from './api/query'
-import {queryAll} from './api/query-all'
-import {scan} from './api/scan'
-import {update} from './api/update'
-import {scanAllSegmented} from './api/scan-all-segmented'
-import {scanAll} from './api/scan-all'
-import {DocumentClient} from 'aws-sdk/clients/dynamodb'
+import {DocumentClient, TransactGetItemList, TransactWriteItemList} from 'aws-sdk/clients/dynamodb'
 import {js2DdbDoc} from './normalizer'
 import {createToken, parseToken} from './token'
 import {gzip, unGzip} from './gzip'
+import {
+  batchGetMassive,
+  BatchGetMassiveInputType,
+  batchWriteMassive,
+  BatchWriteMassiveInputType,
+  del,
+  get,
+  put,
+  query,
+  queryAll,
+  scan,
+  scanAll,
+  scanAllSegmented,
+  transactGet,
+  transactWrite,
+  update,
+} from './api'
 
 export function createDynamoDB(ddbClient: DocumentClient) {
   return {
@@ -22,6 +28,12 @@ export function createDynamoDB(ddbClient: DocumentClient) {
     },
     batchWrite<T>(params: BatchWriteMassiveInputType<T>) {
       return batchWriteMassive<T>(ddbClient, params)
+    },
+    transactGet<T>(params: TransactGetItemList) {
+      return transactGet(ddbClient, params)
+    },
+    transactWrite<T>(params: TransactWriteItemList) {
+      return transactWrite(ddbClient, params)
     },
     del(params: DocumentClient.DeleteItemInput) {
       return del(ddbClient, params)
