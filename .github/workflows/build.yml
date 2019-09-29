@@ -16,7 +16,7 @@ jobs:
       - name: GPR setup
         run: |
           echo "//npm.pkg.github.com/:_authToken=$GPR_TOKEN" > ~/.npmrc
-          echo "registry=https://npm.pkg.github.com/deptno" >> ~/.npmrc
+          echo "@deptno:registry=https://npm.pkg.github.com/" >> ~/.npmrc
         env:
           GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
       - name: lerna
