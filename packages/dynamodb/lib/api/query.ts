@@ -1,4 +1,5 @@
 import {DocumentClient, Key} from 'aws-sdk/clients/dynamodb'
+import {log} from '../log'
 
 export async function query<T>(ddbClient: DocumentClient, params: DocumentClient.QueryInput): Promise<PaginationResult<T>> {
   try {
@@ -6,18 +7,18 @@ export async function query<T>(ddbClient: DocumentClient, params: DocumentClient
       .query(params)
       .promise()
 
-    console.log(JSON.stringify({
-      rcu      : response.ConsumedCapacity
+    log(JSON.stringify({
+      rcu: response.ConsumedCapacity
         ? response.ConsumedCapacity.CapacityUnits
         : 'unknown',
       condition: params.KeyConditionExpression,
-      values   : params.ExpressionAttributeValues,
+      values: params.ExpressionAttributeValues,
     }))
 
     return {
-      items           : response.Items as T[],
+      items: response.Items as T[],
       lastEvaluatedKey: response.LastEvaluatedKey,
-      firstResult     : !Boolean(params.ExclusiveStartKey)
+      firstResult: !Boolean(params.ExclusiveStartKey),
     }
   } catch (e) {
     console.error('query')

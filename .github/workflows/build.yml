@@ -1,0 +1,23 @@
+name: build
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: GPR setup
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=$GPR_TOKEN" > ~/.npmrc
+          echo "registry=https://npm.pkg.github.com/deptno" >> ~/.npmrc
+        env:
+          GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
+      - name: lerna
+        run: npx lerna bootstrap

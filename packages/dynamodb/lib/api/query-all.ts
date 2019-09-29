@@ -1,4 +1,5 @@
 import {DocumentClient} from 'aws-sdk/clients/dynamodb'
+import {log} from '../log'
 
 export async function queryAll<T>(ddbClient: DocumentClient, params: DocumentClient.QueryInput): Promise<T[]> {
   const items: T[] = []
@@ -23,7 +24,7 @@ export async function queryAll<T>(ddbClient: DocumentClient, params: DocumentCli
       }
     } while (nextKey)
 
-    console.log(`queryAll, rcu ${consumedCapacity} ${items.length} items`)
+    log(`queryAll, rcu ${consumedCapacity} ${items.length} items`)
   } catch (e) {
     console.error('error queryAll', e)
     console.error(params)

@@ -2,6 +2,7 @@ import {getObject} from './api/get-object'
 import {putObject} from './api/put-object'
 import {S3} from 'aws-sdk'
 import {identity} from 'ramda'
+import {log} from './log'
 
 export async function cache<T>(s3: S3, params: CacheInputType<T>) {
   const {bucket, key, fetch, store = identity, restore = identity} = params
@@ -21,7 +22,7 @@ export async function cache<T>(s3: S3, params: CacheInputType<T>) {
       Key: key,
       Body: store(fetchedItem)
     })
-    console.log('s3: write', result)
+    log('s3: write', result)
   }
   return fetchedItem
 }

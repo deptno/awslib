@@ -6,6 +6,7 @@ import {
 } from 'aws-sdk/clients/dynamodb'
 import {batchWrite} from './batch-write'
 import {splitEvery} from 'ramda'
+import {log} from '../log'
 
 export async function batchWriteMassive<T>(ddbClient: DocumentClient, params: BatchWriteMassiveInputType<T>): Promise<number> {
   const {tableName, items, mode = 'put'} = params
@@ -28,7 +29,7 @@ export async function batchWriteMassive<T>(ddbClient: DocumentClient, params: Ba
       return acc
     }, [[], 0])
 
-    console.log({
+    log({
       wcu,
       try    : items.length,
       success: items.length - unprocessedItems.length,

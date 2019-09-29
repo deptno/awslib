@@ -1,4 +1,4 @@
 import debug from 'debug'
 
-export const log = debug('auth')
+export const log = debug('@deptno/auth')
 

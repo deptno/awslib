@@ -1,6 +1,6 @@
 {
   "name": "@deptno/dynamodb",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -10,17 +10,27 @@
   },
   "author": "Bonggyun Lee<deptno@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
-    "prepublish": "rimraf dist && rollup -c",
+    "prepare": "rimraf dist && rollup -c",
     "deploy": "npm publish"
   },
   "peerDependencies": {
-    "ramda": "^0.26.1",
-    "aws-sdk": "*"
+    "aws-sdk": "*",
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
-    "@types/node": "^12.7.2",
+    "@types/node": "10",
     "rimraf": "^3.0.0",
-    "rollup": "^1.18.0"
+    "rollup": "^1.18.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "ramda": "^0.26.1"
   }
 }

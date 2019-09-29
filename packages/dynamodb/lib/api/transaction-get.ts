@@ -1,4 +1,5 @@
 import {DocumentClient, TransactGetItemList} from 'aws-sdk/clients/dynamodb'
+import {log} from '../log'
 
 export async function transactGet(ddbClient: DocumentClient, params: TransactGetItemList) {
   try {
@@ -8,7 +9,7 @@ export async function transactGet(ddbClient: DocumentClient, params: TransactGet
         TransactItems: params,
       })
       .promise()
-    console.log({'transaction response': response})
+    log({'transaction response': response})
     return response
   } catch (e) {
     console.error('error batchWrite')

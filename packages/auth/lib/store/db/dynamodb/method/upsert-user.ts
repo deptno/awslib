@@ -1,4 +1,5 @@
 import {UpsertUserInput} from '../../../type'
+import {log} from '../../../../lib/log'
 
 export function upsertUser<U>(params) {
   const {ddbClient, tables} = params
@@ -33,11 +34,10 @@ export function upsertUser<U>(params) {
           ReturnValues: 'ALL_NEW',
         })
         .promise()
-      console.log({user})
+      log({user})
       return user.Attributes
     } catch (e) {
-      console.log('error', e, e.code)
-      console.error('unknown error')
+      console.error('error', e, e.code)
       throw new Error('unknown error')
     }
   }

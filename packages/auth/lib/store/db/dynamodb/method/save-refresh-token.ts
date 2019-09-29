@@ -1,10 +1,11 @@
 import {SaveRefreshTokenInput} from '../../../type'
+import {log} from '../../../../lib/log'
 
 export function saveRefreshToken(params) {
   const {ddbClient, tables} = params
 
   return async function ({id, token, expiresIn}: SaveRefreshTokenInput) {
-    console.log('> save refresh token')
+    log('> save refresh token')
     const putParams = {
       TableName: tables.token.tableName,
       Item: {
@@ -25,7 +26,7 @@ export function saveRefreshToken(params) {
       console.error('fail to save refresh token')
       throw new Error('fail to save refresh token')
     } finally {
-      console.log('< save refresh token')
+      log('< save refresh token')
     }
   }
 }

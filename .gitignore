@@ -1,4 +1,6 @@
 .idea
 .rpt2_cache
+.nyc_output
 dist
 node_modules
+.npmrc

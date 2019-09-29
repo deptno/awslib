@@ -1,4 +1,5 @@
 import {DocumentClient} from 'aws-sdk/clients/dynamodb'
+import {log} from '../log'
 
 export async function get<T>(ddbClient: DocumentClient, params: DocumentClient.GetItemInput) {
   try {
@@ -6,7 +7,7 @@ export async function get<T>(ddbClient: DocumentClient, params: DocumentClient.G
       .get(params)
       .promise()
 
-    console.log({
+    log({
       key: params.Key,
       rcu: response.ConsumedCapacity,
     })

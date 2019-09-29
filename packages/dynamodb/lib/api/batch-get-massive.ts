@@ -1,6 +1,7 @@
 import {batchGet} from './batch-get'
 import {splitEvery} from 'ramda'
 import {DocumentClient, BatchGetResponseMap, BatchGetRequestMap} from 'aws-sdk/clients/dynamodb'
+import {log} from '../log'
 
 export async function batchGetMassive<T>(ddbClient: DocumentClient, params: BatchGetMassiveInputType): Promise<[T[], number]> {
   const {tableName, keysList} = params
@@ -29,7 +30,7 @@ export async function batchGetMassive<T>(ddbClient: DocumentClient, params: Batc
     [[], [], 0]
   )
   if (unprocessedItems.length > 0) {
-    console.log({'retry unprocessedItems': unprocessedItems.length})
+    log({'retry unprocessedItems': unprocessedItems.length})
     const [chunkedItems, chunkedRcu] = await batchGetMassive<T>(ddbClient, {
       tableName,
       keysList: unprocessedItems
