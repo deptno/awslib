@@ -25,6 +25,7 @@
     "@types/aws-lambda": "^8.10.31",
     "@types/node": "10",
     "@types/sinon": "^7.0.13",
+    "aws-sdk": "^2.538.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.18.0",
     "rollup-plugin-commonjs": "^10.1.0",
