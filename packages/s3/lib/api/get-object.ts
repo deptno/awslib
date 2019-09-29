@@ -1,4 +1,5 @@
 import {S3} from 'aws-sdk'
+import {log} from '../log'
 
 export async function getObject(s3: S3, params: S3.Types.GetObjectRequest) {
   try {
@@ -8,7 +9,7 @@ export async function getObject(s3: S3, params: S3.Types.GetObjectRequest) {
     return response.Body
   } catch (e) {
     if (e.code === 'NoSuchKey') {
-      console.log(`[ok] ${params.Key} doesn't exists`)
+      log(`[ok] ${params.Key} doesn't exists`)
     } else {
       console.error('error get')
       console.error(e)

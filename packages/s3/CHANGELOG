@@ -1,3 +1,4 @@
+0.0.5 - debug 추가
 0.0.4 - fix: getObject 에서 await 이 없어서 try - catch 동작 안하는 이슈
 0.0.3 - feature: raw 객체 접근 지원
 0.0.0 - chore: 최초 릴리즈

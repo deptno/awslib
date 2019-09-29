@@ -6,5 +6,4 @@
 npm i @deptno/auth
 ```
 
-
 MIT

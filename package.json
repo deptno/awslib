@@ -7,22 +7,7 @@
   "author": "Bonggyun Lee<deptno@gmail.com>",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "test": "tap"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
-    "@types/aws-sdk": "^2.7.0",
-    "rollup": "^1.18.0",
-    "rollup-plugin-typescript2": "^0.22.1",
-    "tap": "^14.5.0",
-    "tapjs": "^1.0.9",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
-  },
-  "dependencies": {
-    "ramda": "^0.26.1"
+    "lerna": "^3.16.4"
   }
 }
