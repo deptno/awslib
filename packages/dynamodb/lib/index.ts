@@ -62,12 +62,14 @@ export function createDynamoDB(ddbClient: DocumentClient) {
     update<T>(params: DocumentClient.UpdateItemInput) {
       return update<T>(ddbClient, params)
     },
-    util: {
-      js2DdbDoc,
-      createToken,
-      parseToken,
-      gzip,
-      unGzip,
-    },
+    util
   }
+}
+
+export const util = {
+  js2DdbDoc,
+  createToken,
+  parseToken,
+  gzip,
+  unGzip,
 }
