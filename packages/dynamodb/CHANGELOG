@@ -1,3 +1,4 @@
+0.0.15 - createKey 추가
 0.0.14 - util 밖으로 노출
 0.0.13 - debug 적용
 0.0.12 - token 에서 undefined 허용
