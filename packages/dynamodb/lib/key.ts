@@ -4,7 +4,7 @@ export function createKey<T>(keys: (keyof T)[], parser: Record<keyof T, (v: keyo
       const ret = []
       for (const key of keys) {
         const part = parts[key]
-        if (part) {
+        if (!part) {
           break
         }
         ret.push(part)
