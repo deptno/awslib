@@ -1,9 +1,15 @@
-import {defaultTo} from 'ramda'
-
 export function createKey<T>(keys: (keyof T)[], parser: Record<keyof T, (v: keyof T) => T[keyof T]>): DynamoDbKey<T> {
   return {
     stringify(parts) {
-      return keys.map(part => defaultTo('', parts[part])).join('#')
+      const ret = []
+      for (const key of keys) {
+        const part = parts[key]
+        if (part) {
+          break
+        }
+        ret.push(part)
+      }
+      return ret.join('#')
     },
     parse(key) {
       const parts = key.split('#') as (keyof T)[]

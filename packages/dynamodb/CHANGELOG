@@ -1,3 +1,4 @@
+0.0.16 - key.stringify 중 빈값이 나오면 거기서 리턴
 0.0.15 - createKey 추가
 0.0.14 - util 밖으로 노출
 0.0.13 - debug 적용
