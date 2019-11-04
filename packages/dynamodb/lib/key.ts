@@ -24,6 +24,6 @@ export function createKey<T>(keys: (keyof T)[], parser: Record<keyof T, (v: keyo
 }
 
 export type DynamoDbKey<T> = {
-  stringify(parts: T): string
+  stringify(parts: Partial<T>): string
   parse(key: string): T
 }
