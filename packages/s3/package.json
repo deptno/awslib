@@ -12,7 +12,8 @@
   "license": "MIT",
   "scripts": {
     "prepare": "rimraf dist && rollup -c",
-    "deploy": "npm publish"
+    "deploy": "npm publish",
+    "postpublish": "npm publish --ignore-scripts --@deptno:registry='https://registry.npmjs.org'"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

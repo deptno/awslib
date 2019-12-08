@@ -1,6 +1,6 @@
 {
   "name": "@deptno/dynamodb",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -15,7 +15,8 @@
   },
   "scripts": {
     "prepare": "rimraf dist && rollup -c",
-    "deploy": "npm publish"
+    "deploy": "npm publish",
+    "postpublish": "npm publish --ignore-scripts --@deptno:registry='https://registry.npmjs.org'"
   },
   "peerDependencies": {
     "aws-sdk": "*",
