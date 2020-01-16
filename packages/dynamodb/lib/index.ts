@@ -3,6 +3,7 @@ import {js2DdbDoc} from './normalizer'
 import {createToken, parseToken} from './token'
 import {gzip, unGzip} from './gzip'
 import {createKey} from './key'
+import {ttl} from './ttl'
 import {
   batchGetMassive,
   BatchGetMassiveInputType,
@@ -73,8 +74,10 @@ export const util = {
   parseToken,
   gzip,
   unGzip,
-  createKey
+  createKey,
+  ttl
 }
 
 export {DynamoDbKey} from './key'
 export {Gzip} from './gzip'
+export {TTL} from './ttl'
