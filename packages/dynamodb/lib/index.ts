@@ -2,7 +2,7 @@ import {DocumentClient, TransactGetItemList, TransactWriteItemList} from 'aws-sd
 import {js2DdbDoc} from './normalizer'
 import {createToken, parseToken} from './token'
 import {gzip, unGzip} from './gzip'
-import {createKey, DynamoDbKey} from './key'
+import {createKey} from './key'
 import {
   batchGetMassive,
   BatchGetMassiveInputType,
@@ -75,3 +75,6 @@ export const util = {
   unGzip,
   createKey
 }
+
+export {DynamoDbKey} from './key'
+export {Gzip} from './gzip'
