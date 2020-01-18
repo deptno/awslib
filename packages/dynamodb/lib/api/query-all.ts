@@ -29,5 +29,6 @@ export async function queryAll<T>(ddbClient: DocumentClient, params: DocumentCli
     console.error('error queryAll', e)
     console.error(params)
   }
+
   return items
 }

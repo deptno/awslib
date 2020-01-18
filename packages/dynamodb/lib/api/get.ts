@@ -17,6 +17,5 @@ export async function get<T>(ddbClient: DocumentClient, params: DocumentClient.G
     console.error('get')
     console.error(params)
     console.error(e)
-    return
   }
 }

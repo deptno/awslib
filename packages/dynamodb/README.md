@@ -4,7 +4,7 @@
 npm i @deptno/dynamodb
 ```
 
-### logs
+### log
 if you want to check detail logs
 
 ```shell script
@@ -33,7 +33,7 @@ ddb.scan<ReturnSchema>({
 } +19
 ```
 
-###### api
+### api
 - `raw` DynamoDBClient
 - `batchWrite` write unlimited items
 - `batchGet` get unlimited items
@@ -48,6 +48,7 @@ ddb.scan<ReturnSchema>({
   - `unGzip` typed unGzip json
   - `createKey` typed key and parser (eg. `world#2019-11-01` -> `{hello: string, createdAt: Date}`)
 
-###### [changelog](CHANGELOG)
+### [changelog](CHANGELOG)
 
-###### MIT
+### license
+MIT

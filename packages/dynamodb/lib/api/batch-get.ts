@@ -5,11 +5,11 @@ export async function batchGet(ddbClient: DocumentClient, params: DocumentClient
     const response = await ddbClient
       .batchGet(params)
       .promise()
+
     return response
   } catch (e) {
     console.error('error batchGet')
     console.error(e)
     console.error(JSON.stringify(params))
-    return
   }
 }

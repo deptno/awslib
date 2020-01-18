@@ -81,3 +81,4 @@ export const util = {
 export {DynamoDbKey} from './key'
 export {Gzip} from './gzip'
 export {TTL} from './ttl'
+export {PaginationResult} from './type'

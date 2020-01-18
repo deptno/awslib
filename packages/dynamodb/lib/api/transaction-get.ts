@@ -9,7 +9,9 @@ export async function transactGet(ddbClient: DocumentClient, params: TransactGet
         TransactItems: params,
       })
       .promise()
+
     log({'transaction response': response})
+
     return response
   } catch (e) {
     console.error('error batchWrite')

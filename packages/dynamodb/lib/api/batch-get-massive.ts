@@ -35,11 +35,13 @@ export async function batchGetMassive<T>(ddbClient: DocumentClient, params: Batc
       tableName,
       keysList: unprocessedItems
     })
+
     return [
       [...chunkedItems, ...items],
       rcu + chunkedRcu
     ]
   }
+
   return [items, rcu]
 }
 
@@ -56,6 +58,7 @@ async function _batchGetMassive<T>(params: _BatchGetMassiveInputType): Promise<[
       response.ConsumedCapacity[0].CapacityUnits || 0
     ]
   }
+
   return [{}, {}, 0]
 }
 

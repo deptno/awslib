@@ -10,6 +10,5 @@ export async function update<T>(ddbClient: DocumentClient, params: DocumentClien
   } catch (e) {
     console.error('update', e.code, params)
     console.error(e)
-    return
   }
 }

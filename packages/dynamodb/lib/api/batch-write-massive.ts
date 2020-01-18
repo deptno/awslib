@@ -26,6 +26,7 @@ export async function batchWriteMassive<T>(ddbClient: DocumentClient, params: Ba
         acc[0].push(...unprocessedItems.map(unpack))
       }
       acc[1] += wcu
+
       return acc
     }, [[], 0])
 
@@ -43,8 +44,10 @@ export async function batchWriteMassive<T>(ddbClient: DocumentClient, params: Ba
         items: unprocessedItems,
       })
     }
+
     return wcu
   }
+
   return 0
 }
 

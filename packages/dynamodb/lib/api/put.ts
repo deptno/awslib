@@ -5,10 +5,10 @@ export async function put<T>(ddbClient: DocumentClient, params: DocumentClient.P
     await ddbClient
       .put(params)
       .promise()
+
     return params.Item as Promise<T>
   } catch (e) {
     console.error('put', e.code, params.Item)
     console.error(e)
-    return
   }
 }

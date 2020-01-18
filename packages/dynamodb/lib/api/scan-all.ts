@@ -29,5 +29,6 @@ export async function scanAll<T>(ddbClient: DocumentClient, params: DocumentClie
     console.error('error scanAll', e)
     console.error(params)
   }
+
   return items
 }

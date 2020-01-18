@@ -1,5 +1,6 @@
 import {DocumentClient, Key} from 'aws-sdk/clients/dynamodb'
 import {log} from '../log'
+import {PaginationResult} from '../type'
 
 export async function query<T>(ddbClient: DocumentClient, params: DocumentClient.QueryInput): Promise<PaginationResult<T>> {
   try {
@@ -24,14 +25,10 @@ export async function query<T>(ddbClient: DocumentClient, params: DocumentClient
     console.error('query')
     console.error(e)
     console.error(params)
+
     return {
       items: [],
     }
   }
 }
 
-export type PaginationResult<T> = {
-  items: T[]
-  lastEvaluatedKey?: Key
-  firstResult?: boolean
-}

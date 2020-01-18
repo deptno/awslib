@@ -1,6 +1,5 @@
 import {DocumentClient} from 'aws-sdk/clients/dynamodb'
 import {scanAll} from './scan-all'
-import {flatten} from 'ramda'
 
 export async function scanAllSegmented<T>(ddbClient: DocumentClient, segmentCount: number, params: DocumentClient.ScanInput): Promise<T[]> {
   const nested = await Promise.all(
@@ -13,6 +12,6 @@ export async function scanAllSegmented<T>(ddbClient: DocumentClient, segmentCoun
       }))
   )
 
-  return flatten(nested)
+  return nested.flat()
 }
 

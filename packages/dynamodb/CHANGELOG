@@ -1,3 +1,9 @@
+0.1.0 - Breaking Changes
+  - version > node@12, [].flat() 지원 필요
+  - scan, 리턴 변경 T[] -> PaginationResult<T>
+
+---
+
 0.0.21 - ttl 구현, type export: TTL
 0.0.20 - type export: Gzip, DynamoDbKey
 0.0.18 - key.stringify 는 입력타을 Partial 로 변경
