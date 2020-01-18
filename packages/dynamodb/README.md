@@ -4,6 +4,35 @@
 npm i @deptno/dynamodb
 ```
 
+### logs
+if you want to check detail logs
+
+```shell script
+DEBUG=@deptno/dynamodb node [your program]
+```
+
+```typescript
+import {createDynamoDB} from '@deptno/dynamodb'
+
+const ddb = createDynamoDB(documnetClient)
+
+ddb.scan<ReturnSchema>({
+  TableName: '...',
+  Limit: 300,
+  ReturnConsumedCapacity: 'TOTAL'
+})
+```
+
+```shell script
+{
+  Items: [...],
+  Count: 300,
+  ScannedCount: 300,
+  LastEvaluatedKey: {...},
+  ConsumedCapacity: { TableName: '...', CapacityUnits: 22 }
+} +19
+```
+
 ###### api
 - `raw` DynamoDBClient
 - `batchWrite` write unlimited items

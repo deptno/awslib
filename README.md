@@ -2,6 +2,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![](https://github.com/deptno/awslib/workflows/build/badge.svg)
 
+personal aws-sdk wrapper
 
 ```
 npm i @deptno/dynamodb
@@ -10,4 +11,6 @@ npm i @deptno/lambda
 npm i @deptno/auth
 ```
 
-personal aws-sdk wrapper
+## docs
+[@deptno/dynamodb](packages/dynamodb)
+
