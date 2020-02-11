@@ -1,3 +1,4 @@
+0.1.1 - scan 로그에 데이터가 찍히는 오류 수정
 0.1.0 - Breaking Changes
   - version > node@12, [].flat() 지원 필요
   - scan, 리턴 변경 T[] -> PaginationResult<T>

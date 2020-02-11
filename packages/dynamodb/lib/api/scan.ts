@@ -8,7 +8,7 @@ export async function scan<T>(ddbClient: DocumentClient, params: DocumentClient.
       .scan(params)
       .promise()
 
-    log('scan', response)
+    log(`rcu: ${response.ConsumedCapacity}, items: ${response.Items.length}`)
 
     return {
       items: response.Items as T[],
@@ -16,7 +16,6 @@ export async function scan<T>(ddbClient: DocumentClient, params: DocumentClient.
       firstResult: !Boolean(params.ExclusiveStartKey),
     }
   } catch (e) {
-    console.error('error scan')
     console.error('error scan', e)
 
     return {
